@@ -15,7 +15,7 @@ services:
     restart: always
     volumes:
       - database-data:/var/lib/postgresql/data/
-    env_file: .env
+    env_file: .env.example
     networks:
       - stack
 
@@ -40,7 +40,7 @@ services:
       - stack
     ports:
       - 3000:3000
-    env_file: .env
+    env_file: .env.example
     environment:
       - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DATABASE_HOST}/${POSTGRES_DB}
       - DATABASE_DIRECT_URL=${DATABASE_URL}
@@ -55,7 +55,7 @@ services:
       - stack
     ports:
       - 5555:5555
-    env_file: .env
+    env_file: .env.example
     environment:
       - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DATABASE_HOST}/${POSTGRES_DB}
       - DATABASE_DIRECT_URL=${DATABASE_URL}
